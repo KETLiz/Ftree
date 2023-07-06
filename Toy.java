@@ -1,4 +1,6 @@
-public class Toy implements Comparable<Toy>{
+import java.io.Serializable;
+
+public class Toy implements Comparable<Toy>, Serializable {
     private int id;
     private String name;
     private int weight;
@@ -26,6 +28,6 @@ public class Toy implements Comparable<Toy>{
     }
     
     public int compareTo(Toy o) {
-        return Integer.valueOf(this.getWeight()).compareTo(Integer.valueOf(o.getWeight()));
+        return Integer.valueOf(o.getWeight()).compareTo(Integer.valueOf(this.getWeight()));
     }
 }
