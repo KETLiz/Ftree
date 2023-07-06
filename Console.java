@@ -1,4 +1,4 @@
-﻿import java.util.Scanner;
+import java.util.Scanner;
 import java.util.PriorityQueue;
 
 public class Console {
@@ -15,10 +15,32 @@ public class Console {
     }
     
     public void start() {
-        System.out.println("Hello!");
+        System.out.println("Добрейшего времени суток!");
         while(work) {
-            System.out.println("Введите команду:\n1 - Добавить игрушку\n2 - Выбрать игрушку\n4 - Получить игрушку\n5 - Выход");
+            commands();
+            String line = sc.nextLine();
+            int numCommand = Integer.parseInt(line);
+            switch(numCommand) {
+                case 1: addToyByUser();
+                        break;
+                case 2: chooseToy();
+                        break;
+                case 3: System.out.println(raffleGame());
+                        break;
+                case 4: showToys();
+                        break;
+                case 5: System.out.println(showChooseToys());
+                        break;
+                case 6: exit();
+                        break;
+                default: System.out.println("Такой команды нет. Попробуем сначала?");
+                        break;
+            }
         }
+    }
+    
+    public void commands() {
+        System.out.println("Введите команду:\n1 - Добавить игрушку\n2 - Выбрать игрушку\n3 - Получить игрушку\n4 - Показать все игрушки\n5 - Показать выбранные игрушки\n6 - Выход");
     }
     
     public void addToyByUser() {
@@ -31,10 +53,6 @@ public class Console {
         String line2 = sc.nextLine();
         int weight = Integer.parseInt(line2);
         shop.addToy(new Toy(id, name, weight));
-    }
-    
-    public void addToy(Toy toy) {
-        shop.addToy(toy);
     }
     
     public void chooseToy() {
@@ -56,4 +74,17 @@ public class Console {
     public void showToys() {
          System.out.println(shop.showInfo());
     }
+    
+    public Toy raffleGame() {
+        return p.poll();
+    }
+    
+    public void add(Toy toy) {
+        p.add(toy);
+    }
+    
+    public boolean exit() {
+        return work = false;
+    }
+    
 }
