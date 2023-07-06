@@ -1,7 +1,8 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class ToysShop {
+public class ToysShop implements Serializable {
     List<Toy> shop;
     Toy toy;
     
